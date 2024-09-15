@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6em6psgqj57l"]
+
+[ext_resource type="Texture2D" uid="uid://omkacysr6wl" path="res://sprites/bk_cars1.a.png" id="2_mbher"]
+
+[sub_resource type="GDScript" id="GDScript_li3n1"]
+script/source = "extends Node
+class_name AtlasScene
+
+@export_dir var destination_path : String
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clmp0"]
+size = Vector2(50, 136)
+
+[node name="Car17" type="Area2D"]
+
+[node name="AtlasScene" type="Node" parent="."]
+script = SubResource("GDScript_li3n1")
+
+[node name="Sprite2D" type="Sprite2D" parent="AtlasScene" groups=["Road6"]]
+rotation = 1.5708
+texture = ExtResource("2_mbher")
+region_enabled = true
+region_rect = Rect2(426, 21, 60, 137)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+top_level = true
+position = Vector2(1, 0)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_clmp0")

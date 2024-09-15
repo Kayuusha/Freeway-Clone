@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://c45ctv2rhu0kq"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_3yemd"]
+[ext_resource type="Texture2D" uid="uid://dvoqp3g00swpl" path="res://sprites/player_walk_strip6.png" id="1_73g7q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6qu4"]
+atlas = ExtResource("1_73g7q")
+region = Rect2(175, 0, 35, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr5po"]
+atlas = ExtResource("1_73g7q")
+region = Rect2(105, 0, 35, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ete8"]
+atlas = ExtResource("1_73g7q")
+region = Rect2(0, 0, 35, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21uox"]
+atlas = ExtResource("1_73g7q")
+region = Rect2(35, 0, 35, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03m87"]
+atlas = ExtResource("1_73g7q")
+region = Rect2(70, 0, 35, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqr3s"]
+atlas = ExtResource("1_73g7q")
+region = Rect2(140, 0, 35, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4trqm"]
+atlas = ExtResource("1_73g7q")
+region = Rect2(175, 0, 35, 57)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wxuol"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6qu4")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr5po")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ete8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21uox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03m87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr5po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqr3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4trqm")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ys0ao"]
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_3yemd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -3)
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_wxuol")
+animation = &"walk"
+frame_progress = 0.861161
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ys0ao")

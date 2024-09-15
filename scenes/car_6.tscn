@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5cb4ytkju3mm"]
+
+[ext_resource type="Script" path="res://scripts/car_6.gd" id="1_8uj6c"]
+[ext_resource type="Texture2D" uid="uid://omkacysr6wl" path="res://sprites/bk_cars1.a.png" id="1_400e4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w75s8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivafb"]
+size = Vector2(94, 44)
+
+[node name="Car6" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_8uj6c")
+
+[node name="Police" type="Sprite2D" parent="."]
+visible = false
+rotation = -1.5708
+texture = ExtResource("1_400e4")
+region_enabled = true
+region_rect = Rect2(130, 16, 48, 93)
+
+[node name="Red" type="Sprite2D" parent="."]
+visible = false
+rotation = -1.5708
+texture = ExtResource("1_400e4")
+region_enabled = true
+region_rect = Rect2(7, 446, 51, 96)
+
+[node name="Black" type="Sprite2D" parent="."]
+visible = false
+rotation = -1.5708
+texture = ExtResource("1_400e4")
+region_enabled = true
+region_rect = Rect2(72, 446, 51, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_w75s8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ivafb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(46, 0)
+scale = Vector2(0.1, 1)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
